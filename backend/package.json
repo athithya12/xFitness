@@ -4,14 +4,18 @@
   "main": "build/index.js",
   "private": false,
   "scripts": {
-    "start:dev": "nodemon src/index.ts"
+    "start:dev": "nodemon src/index.ts",
+    "db": "yarn knex --knexfile src/knexfile.js"
   },
   "dependencies": {
     "apollo-server": "^3.9.0",
     "graphql": "^16.5.0",
-    "lodash": "^4.17.21"
+    "knex": "^2.1.0",
+    "lodash": "^4.17.21",
+    "pg": "^8.7.3"
   },
   "devDependencies": {
+    "@types/knex": "^0.16.1",
     "@types/lodash": "^4.14.182",
     "nodemon": "^2.0.19",
     "ts-node": "^10.8.2",
