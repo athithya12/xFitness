@@ -14,8 +14,7 @@ import {
 } from "@mantine/core";
 import { ColumnDef, Table } from "@tanstack/react-table";
 import { Layout, XTable } from "Components";
-import { ingredients } from "Data";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   CloudUpload,
   Copy,
@@ -26,6 +25,7 @@ import {
   Trash,
 } from "tabler-icons-react";
 import { Ingredient } from "Types";
+import { copyRow } from "Utils";
 
 const GET_INGREDIENTS = gql`
   query GetIngredients {
@@ -83,7 +83,7 @@ const columns: ColumnDef<Ingredient>[] = [
   },
   {
     accessorKey: "name",
-    header: ({ column }) => {},
+    header: "Ingredient",
   },
   {
     accessorKey: "quantity",
@@ -124,24 +124,30 @@ const columns: ColumnDef<Ingredient>[] = [
   },
   {
     header: "Actions",
-    cell: ({ row }) => (
-      <Group spacing={16}>
-        <ActionIcon disabled>
-          <Copy size={20} />
-        </ActionIcon>
-        <ActionIcon disabled>
-          <Trash size={20} />
-        </ActionIcon>
-        <ActionIcon disabled>
-          <Edit size={20} />
-        </ActionIcon>
-      </Group>
-    ),
+    cell: ({ row }) => {
+      return (
+        <Group spacing={16}>
+          <ActionIcon
+            onClick={() => {
+              copyRow<Ingredient>(row.original);
+            }}
+          >
+            <Copy size={20} />
+          </ActionIcon>
+          <ActionIcon disabled>
+            <Trash size={20} />
+          </ActionIcon>
+          <ActionIcon disabled>
+            <Edit size={20} />
+          </ActionIcon>
+        </Group>
+      );
+    },
   },
 ];
 
 const IngredientsPage = () => {
-  const { data } = useQuery<Data>(GET_INGREDIENTS);
+  const { loading, data } = useQuery<Data>(GET_INGREDIENTS);
 
   const [table, setTable] = useState<Table<Ingredient> | undefined>(
     undefined
@@ -203,15 +209,17 @@ const IngredientsPage = () => {
           </Group>
         </Group>
         <Divider />
-        <XTable
-          // @ts-ignore
-          columns={columns}
-          data={ingredients}
-          getTableInstance={(table) => {
+        {data && (
+          <XTable
             // @ts-ignore
-            setTable(table);
-          }}
-        />
+            columns={columns}
+            data={data.ingredients}
+            getTableInstance={(table) => {
+              // @ts-ignore
+              setTable(table);
+            }}
+          />
+        )}
       </Stack>
     </Layout>
   );
