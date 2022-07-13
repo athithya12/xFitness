@@ -14,7 +14,7 @@ class BaseAccessor<Model> {
   }
 
   public async clientKdAware() {
-    return this.clientAware().whereNotNull("knowledgeEndDate");
+    return this.clientAware().whereNull("knowledgeEndDate");
   }
 }
 

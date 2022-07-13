@@ -4,3 +4,5 @@ interface BaseModel {
   knowledgeBeginDate: Date;
   knowledgeEndDate: Date;
 }
+
+export default BaseModel;

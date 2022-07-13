@@ -16,7 +16,13 @@ declare global {
   }
 }
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  context: () => {
+    return { userId: 1 };
+  },
+});
 
 server.listen({ port: process.env.PORT }).then(({ url }) => {
   console.log(`🚀  GraphQL server ready at ${url}`);

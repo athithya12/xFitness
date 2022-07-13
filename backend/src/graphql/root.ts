@@ -1,8 +1,9 @@
 import { gql } from "apollo-server";
+import { IngredientsAccessor } from "../accessors";
 
 export const typeDefs = gql`
   type Query {
-    ping: String
+    ingredients: [Ingredient]!
   }
 
   type Mutation {
@@ -12,7 +13,13 @@ export const typeDefs = gql`
 
 export const resolvers = {
   Query: {
-    ping: () => "pong",
+    ingredients: async (_: any, __: any, context: { userId: number }) => {
+      const ingredients = await new IngredientsAccessor(
+        context.userId
+      ).clientKdAware();
+
+      return ingredients;
+    },
   },
   Mutation: {
     ping: () => "pong",
