@@ -1,1 +1,0 @@
-interface UserPreferences extends BaseModel {}

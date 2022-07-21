@@ -1,8 +1,12 @@
-interface BaseModel {
+export interface BaseModel {
   id: number;
   userId: number;
   knowledgeBeginDate: Date;
-  knowledgeEndDate: Date;
+  knowledgeEndDate: Date | null;
 }
 
-export default BaseModel;
+export type BaseModelFields =
+  | "id"
+  | "userId"
+  | "knowledgeBeginDate"
+  | "knowledgeEndDate";

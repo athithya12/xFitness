@@ -1,4 +1,4 @@
-interface User {
+export interface UserModel {
   id: number;
   knowledgeBeginDate: Date;
   knowledgeEndDate: Date;
@@ -10,5 +10,3 @@ interface User {
   height: number;
   weight: string;
 }
-
-export default User;

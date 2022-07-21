@@ -1,3 +1,4 @@
+import { db } from "../configs";
 import { IngredientsModel } from "../models";
 import BaseAccessor from "./baseAccessor";
 

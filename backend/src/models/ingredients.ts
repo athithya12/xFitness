@@ -1,6 +1,6 @@
-import BaseModel from "./baseModel";
+import { BaseModel } from "./baseModel";
 
-interface IngredientsModel extends BaseModel {
+export interface IngredientsModel extends BaseModel {
   name: string;
   quantity: number;
   unit: string;
@@ -11,5 +11,3 @@ interface IngredientsModel extends BaseModel {
   energy: number;
   category: string;
 }
-
-export default IngredientsModel;

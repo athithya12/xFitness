@@ -16,6 +16,30 @@ const typeDefs = gql`
     energy: Float!
     category: String!
   }
+
+  input IngredientInput {
+    name: String!
+    quantity: Int!
+    unit: String!
+    proteins: Float!
+    carbs: Float!
+    fats: Float!
+    fibers: Float!
+    energy: Float!
+    category: String!
+  }
+
+  input IngredientUpdateInput {
+    name: String
+    quantity: Int
+    unit: String
+    proteins: Float
+    carbs: Float
+    fats: Float
+    fibers: Float
+    energy: Float
+    category: String
+  }
 `;
 
 const resolvers = {};

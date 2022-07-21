@@ -58,7 +58,7 @@ const Layout: React.FC<Props> = ({ activeTab, children }) => {
         </Box>
         <Box
           sx={{
-            height: `calc(100vh - 64px)`,
+            maxHeight: `calc(100vh - 64px)`,
             overflowY: "scroll",
           }}
         >

@@ -9,6 +9,8 @@
     "@mantine/dates": "^4.2.10",
     "@mantine/form": "^4.2.10",
     "@mantine/hooks": "^4.2.10",
+    "@mantine/modals": "^4.2.12",
+    "@mantine/notifications": "^4.2.12",
     "@tanstack/match-sorter-utils": "^8.1.1",
     "@tanstack/react-table": "^8.2.3",
     "@testing-library/jest-dom": "^5.14.1",

@@ -3,12 +3,12 @@ import { CommonQuery, commonResolvers } from "./common";
 import { IngredientsQuery, ingredientsResolvers } from "./ingredients";
 import { RootQuery, rootResolvers } from "./root";
 
-const typeDefs = [RootQuery, CommonQuery, IngredientsQuery];
+const typeDefs = [CommonQuery, IngredientsQuery, RootQuery];
 
 const resolvers = merge(
-  rootResolvers,
   commonResolvers,
-  ingredientsResolvers
+  ingredientsResolvers,
+  rootResolvers
 );
 
 export { typeDefs, resolvers };
